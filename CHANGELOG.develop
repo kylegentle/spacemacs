@@ -168,6 +168,7 @@ Kraemer, Yi Liu, and Jack Kamm):
 ***** JavaScript
 - CoffeeScript support has been extracted from the =javascript= layer into the
   new =coffeescript= layer.
+- Added missing prefix for =js2-mode=
 ***** Markdown
 - Key bindings:
   - Removed ~SPC m i I~ for =markdown-insert-reference-image=
@@ -309,6 +310,7 @@ Benner and Paweł Siudak):
 - pact (thanks to Colin Woodbury)
 - perl5 (thanks to Troy Hinckley, Jinseop Kim and Michael Rohleder)
 - perl6 (thanks to Bahtiar Gadimov and yuhan0)
+- prolog (thanks to Newres Al Haider)
 - protobuf (thanks to Amol Mandhane)
 - restructuredtext (thanks to Wei-Wei Guo and Kalle Lindqvist)
 - semantic-web (thanks to Andreas Textor)
@@ -332,6 +334,7 @@ Benner and Paweł Siudak):
 - dap (thanks to Ivan Yonchovski)
 - debug (thanks to Hodge Shen, Troy Hinckley, and Sylvain Benner)
 - emberjs (thanks to Robert O'Connor)
+- import-js (thanks to Thanh Vuong and Seong Yong-ju)
 - lsp (thanks to Fangrui Song, 0bl.blwl, Cormac Cannon, Juuso Valkeejärvi, Guan
   Xipeng, Ivan Yonchovski, Justin Martin, dscole and Sylvain Benner)
 - node (thanks to jupl)
@@ -505,6 +508,7 @@ Other:
   - Fixed bug that could overwrites customize variables (thanks to bmag)
   - Don't suggest ~SPC q r~ if =restart-emacs= package is missing after an
     update (thanks to Keshav Kini)
+  - spacemacs-layouts: Add Projectile project buffers to new perspectives.
   - Resolve symlinks in warning message about duplicate layers
     (thanks to Ben Gamari)
   - Check toggle condition in status function (thanks to Eivind Fonn)
@@ -526,6 +530,7 @@ Other:
   - Don't skip missing .elc files when recompiling Elpa (thanks to RockyRoad29)
   - Updated =quelpa= to fix installing of some recipes on macOS (thanks to Dieter
     Komendera)
+  - Added startup support for doom-sourcerer theme (thanks to Parker Johnson)
 - Other:
   - New function =configuration-layer/message= to display message in
     =*Messages*= buffer (thanks to Sylvain Benner)
@@ -550,6 +555,7 @@ Other:
     refactored the latter function (thanks to Benjamin Reynolds)
   - Added =pupo-split-active-window= variable to split the active window or the
     entire frame (thanks to tddsg)
+  - New emacs banner: "100-banner.txt" (thanks to Robert Zaremba)
 *** Distribution changes
 - Refactored =spacemacs-bootstrap=, =spacemacs-ui=, and =spacemacs-ui-visual=
   layers:
@@ -918,6 +924,7 @@ Other:
   - Fixed evil surround bindings (thanks to Hoyon Mak)
   - Improved Window Manipulation Transient state (thanks to yuhan0)
   - Exclude which-key from layer sync powerline restore (thanks to Doug Wilson)
+  - Fix doom-modeline in the messages buffer (thanks to duianto)
 *** Layer changes and fixes
 **** Ansible
 - Improvements:
@@ -1055,6 +1062,7 @@ Other:
   - ~SPC m r c :~ to toggle between a keyword and a string (thanks to John
     Stevenson)
   - ~SPC m s X~ to restart the REPL (thanks to James Conroy-Finn)
+  - ~SPC m e u~ undefine symbol in the current namespace (thanks to John Stevenson)
 - Fixes:
   - Fixed =cider-inspector-prev-page= binding, also add ~p~ as another key
     binding (thanks to Brian Fay)
@@ -1212,6 +1220,7 @@ Other:
 **** Emoji
 - Added support for Emoji fonts on macOS and Linux (thanks to CodeFalling )
 - Setup =emojify= cache directory (thanks to Boris Buliga)
+- Hide mode-line indicator: =emoji= (thanks to duianto)
 **** ERC
 - Key bindings:
   - ~SPC m b~ to switch between ERC buffers (thanks to Evan Klitzke)
@@ -1267,6 +1276,12 @@ Other:
 - Key bindings:
   - Added ~g r~ evilified binding to gist-list-mode (thanks to Jean-Sebastien A.
     Beaudry)
+  - Forge-topic buffer (thanks to Miciah Masters and yuhan0):
+    - ~SPC m c~ create new post
+    - ~SPC m e~ edit post
+  - Forge-post buffer (thanks to Miciah Masters and yuhan0):
+    - ~SPC m c~ or ~SPC m ,~ submit post
+    - ~SPC m k~ or ~SPC m k~ cancel post
 - Replace =evilified-state-evilify= by =evilified-state-evilify-map= (thanks to
   Sylvain Benner)
 - Made magithub offline by default (thanks to Miciah Masters)
@@ -1280,6 +1295,14 @@ Other:
   - ~SPC g i~ to initialize a repository (thanks to Steven Allen)
   - ~SPC m g y~ to find symbols (thanks to Daniel Ralston)
   - ~SPC g f d~ for =magit-diff= (thanks to Ag Ibragimov and bmag)
+  - Commit message buffer (thanks to yuhan0):
+    - ~SPC m c~ or ~SPC m ,~ commit changes with the entered message
+    - ~SPC m a~ or ~SPC m k~ discard message and abort the commit
+    - ~g j~ or ~M-n~ cycle through history to the previous commit message
+    - ~g k~ or ~M-p~ save current commit message and cycle to the next message
+  - Log selection buffer (thanks to yuhan0):
+    - ~SPC m c~ or ~SPC m ,~ select the commit at point and act on it
+    - ~SPC m a~ or ~SPC m k~ abort selecting and don't act on any commit
 - Added feature to toggle =evil-magit= based on editing style (thanks to Muneeb
   Shaikh)
 - Added =use-package= for deferred loading of evil-magit (thanks to Sylvain
@@ -1295,6 +1318,7 @@ Other:
 - Fixed magint blame function name (thanks to Bjarke Vad Andersen)
 - Show magit-log-select and diff in two windows (thanks to duianto)
 - Fix magit conflicting with golden-ratio (thanks Eric Zhang)
+- Hide with-editor mode-line indicator: =WE= (thanks to duianto)
 **** Go
 - Improved go test output buffer behavior (thanks to Denis Bernard)
 - Configurable extra arguments to go run (thanks to Enze Chi)
@@ -1520,6 +1544,7 @@ Other:
     (thanks to Ting Zhou and Sylvain Benner)
   - Added ES6 module extension to =init-js2-mode= (thanks to Nathan Lloyd)
   - Added =org-babel= support (thanks to Michael Rohleder)
+  - Added debug support via =dap= layer (Firefox and Google Chrome)
 - Key bindings
   - Improved coffeescript support:
     - ~SPC m '~ to create or go to REPL
@@ -1581,6 +1606,9 @@ Other:
 - Added package =helm-lsp=
   - ~SPC m g s~ to find symbol in current project
   - ~SPC m g S~ to find symbol in all projects
+**** Debug Adapter Protocol (DAP)
+- Key bindings
+  - ~SPC m d d e~ to edit debug template
 **** Markdown
 - New layer variable =markdown-mmm-auto-modes= which is a list of language names
   or lists of language and mode names that are supported in source blocks, you
@@ -1763,6 +1791,7 @@ Other:
 - Remove =mu4e= and =notmuch= from =org= (thanks to Sylvain Benner)
 - Use evil-org from MELPA (thanks to Eivind Fonn)
 - Added =org-brain= (thanks to Matthías Páll Gissurarson and Eivind Fonn)
+- Added detailed =org-brain= bindings (thanks to Langston Barret)
 - Added layer variable for todo bindings (thanks to Eivind Fonn)
 - Made =org-projectile= integration compatible with its new version (thanks to
   Ivan Malison)
@@ -1795,6 +1824,7 @@ Other:
   Buchaus)
 - Replace ox-reveal with org-re-reveal (thanks to Magnus Therning)
 - Added epub support (thanks to vishvanath45)
+- Added support for CUSTOM_ID in latex exports (thanks to Compro-Prasad)
 **** Osx
 - Fixed OSX mapping issue (thanks to Joey Liu)
 - Added layer variables to customize modifier behaviors on macOS:
@@ -1895,6 +1925,9 @@ Other:
   rgb-24bit)
 - Added diminish for importmagic (thanks to Loys Ollivier)
 - Added debugger integration via =dap= layer
+- Added documentation on installing importmagic and epc (thanks to Trapez Breen)
+- Made python-send-shell-* functions faster (thanks to Trapez Breen)
+- Added support for 'black' formatter (thanks to Mike Macpherson)
 **** Racket
 - Restore smart closing paren behavior in racket-mode (thanks to Don March)
 **** Ranger
@@ -1989,6 +2022,7 @@ Other:
     for ~SPC m c f~ to format project files (thanks to Luke Alexander Stein)
   - Added ~SPC m c v~ to run "cargo check" command (thanks to Victor Polevoy)
 - Added rust lsp completion with company and bindings (thanks to Justin)
+- Added debugger integration via =dap= layer
 **** Scala
 - Move =ensime= to the =java= layer (Tor Hedin Bronner)
 - Key bindings:
@@ -2162,6 +2196,7 @@ Other:
   Kramer)
 - Fixed jump handling with multiple backends (thanks to Aaron Jensen)
 - Fixed =typescript/jump-to-type-def= for npm modules (thanks to Jam Risser)
+- Added the same setup to tsx files as to ts files (thanks to Trapez Breen)
 **** Vagrant
 - Key bindings:
   - move key bindings prefix to ~SPC a V~ (thanks to Thomas de Beauchêne)
@@ -2193,12 +2228,21 @@ Other:
     - ~SPC g v r~ to  resolve conflicts in file
   - Define key bindings with leader key for vim editing style in =diff-mode=
     (thanks to miyabinomuratic)
+  - Added smerge transient state diff key bindings (thanks to Wang):
+    ~SPC g r <~ diff base/mine
+    ~SPC g r =~ diff mine/other
+    ~SPC g r >~ diff base/other
+  - Added smerge transient state key bindings (thanks to duianto):
+    ~SPC g r e >~ ediff
+    ~SPC g r K >~ kill current
 - New packages:
   - =browse-at-remote= which replaces =github-browse-file=
    (thanks Eugene Yaremenko)
 - Avoid loading all the diff packages (thanks to Sylvain Benner)
 - Fixed error on =diff-hl-margin-mode= function being nil during startup (thanks
   to Voleking)
+**** Xclipboard
+- Added Requirements documentation (thanks to Chris Glass)
 **** Ycmd
 - Search for =compile_commands.json= in build sub-directory
   (thanks to Amos Bird and Eivind Fonn)
@@ -2219,31 +2263,33 @@ Other:
   Renner, Adam Frey, Adam Kruszewski, Alexander Dalshov, Alexander Eberspächer,
   Alexander Iljin, Alexander Kjeldaas, Alexandros Kotzias, Andriy Senyshyn,
   Anton Latukha, Antonio Miranda, Anurag Sharma, Archenoth, Ather Sharif, Artur
-  Juraszek, Benjamin Reynolds, Billy Wade, bmag, Boris Buliga, Boris Wong, Carl
-  Lange, Chase Adams, Cibin Mathew, CL123123, Codruț Constantin Gușoi,
-  Compro-Prasad, Daniel Hodson, Daniel Le, Daniel Molina, Darkhan, David
-  Florness, David Vo, davidpham87, Deepu Mohan Puthrote, Dela Anthonio, Diego
-  Alvarez, Diego Berrocal, Dietrich Daroch, Dinesh Bhosale, Dominik Schrempf,
-  Doug Beardsley, dubnde, duianto, eldios, EMayej, Eugene Yaremenko, Evan
-  Klitzke, Evan Niessen-Derry, firemiles, Fuqiao Xue, Garrett Johnson, Grant
-  Shangreaux, Henry Marshall, hornuda, Ivan Kryvoruchko, J. Patrick Lanigan,
-  Jaremy Creechley, Jason Axelson, Jesse Cooke, Jethro Shuwen Sun, JI Xiang, Jim
+  Juraszek, Benjamin Reynolds, Bernhard Schommer, Billy Wade, bmag, Boris
+  Buliga, Boris Wong, Carl Lange, Chase Adams, Cibin Mathew, CL123123, Codruț
+  Constantin Gușoi, Compro-Prasad, Daniel Hodson, Daniel Le, Daniel Molina,
+  Darkhan, David Florness, David Vo, davidpham87, Deepu Mohan Puthrote, Dela
+  Anthonio, Diego Alvarez, Diego Berrocal, Dietrich Daroch, Dinesh Bhosale,
+  Dominik Schrempf, Doug Beardsley, dubnde, duianto, eldios, EMayej, Eugene
+  Yaremenko, Evan Klitzke, Evan Niessen-Derry, firemiles, Florian Bruhin, Fuqiao
+  Xue, Garrett Johnson, Grant Shangreaux, Henrique Jung, Henry Hirsch, Henry
+  Marshall, hornuda, Ivan Fedorov, Ivan Kryvoruchko, J. Patrick Lanigan, Jaremy
+  Creechley, Jason Axelson, Jesse Cooke, Jethro Shuwen Sun, JI Xiang, Jim
   Deville, Jody Frankowski, Joe Hillenbrand, John Eismeier, John Wood, Jon
   Tippens, Jonas Strømsodd, Jonathan Arnett, Jonathan Gillett, Josh Greenwood,
   Joshua Santos, Justin Stone, Kainalu Hagiwara, Kalle Lindqvist, Kechao Cai,
   Keith Simmons, Keith Wygant, Kevin Ji, Kristoffer Haugsbakk, lawrsp, Leo
-  Joseph Buchignani III, Luke Worth, Marco Ieni, Marco Zucconelli, Max Beutelspacher, Max
-  Nordlund, Maximilian Wolff, Miciah Dashiel Butler Masters, mjkramer, Mikhail
-  Yakutovich, Muneeb Shaikh, Nasser Alshammari, Nasser Alshammari, Niko Felger,
-  Nikolai Myllymäki, nikolaiam, Nicolas Forgerit, Olivier Verdier, Pancho
-  Horrillo, Paul Milla, Paulo Schneider, Pawan Dubey, Paweł Siudak, Phil
-  Pirozhkov, Philippe Bourdages, Piotr Grzesik, Rafi Khan, Rand01ph, rakyi,
-  Raymond Wanyoike, Reverend Homer, Robby O'Connor, Rhommel Lamas, Sam Pablo
-  Kuper, Saulius Menkevičius, sduthil, Sergio Ugalde, Shane Kilkelly, Sid Kapur,
-  Somelauw, Soobin Rho, sorawee, SteveJobzniak, Sunghyun Hwang, Swaroop C H,
-  Sylvain Benner, Szunti, Tim Stewart, timor, TinySong, Titov Andrey, Thomas de
-  Beauchêne, Tomasz Cichocinski, tzhao11, Vlad Bokov, Vladimir Kochnev, Wieland
-  Hoffmann, Xiang Ji, Yi Liu, zer09, Zhige Xin, Serghei Iakovlev)
+  Joseph Buchignani III, Luke Worth, Marco Ieni, Marco Zucconelli, Max
+  Beutelspacher, Max Nordlund, Maximilian Wolff, Miciah Dashiel Butler Masters,
+  mjkramer, Mikhail Yakutovich, Muneeb Shaikh, Nasser Alshammari, Nasser
+  Alshammari, Niko Felger, Nikolai Myllymäki, nikolaiam, Nicolas Forgerit,
+  Olivier Verdier, Pancho Horrillo, Paul Milla, Paulo Schneider, Pawan Dubey,
+  Paweł Siudak, Phil Pirozhkov, Philippe Bourdages, Piotr Grzesik, Rafi Khan,
+  Rand01ph, rakyi, Raymond Wanyoike, Reverend Homer, Robby O'Connor, Rhommel
+  Lamas, Sam Pablo Kuper, Saulius Menkevičius, sduthil, Sergio Ugalde, Shane
+  Kilkelly, Sid Kapur, Somelauw, Soobin Rho, sorawee, SteveJobzniak, Sunghyun
+  Hwang, Swaroop C H, Sylvain Benner, Szunti, Tim Stewart, timor, TinySong,
+  Titov Andrey, Thomas de Beauchêne, Tomasz Cichocinski, tzhao11, Vincent Taing,
+  Vlad Bokov, Vladimir Kochnev, Wieland Hoffmann, Xiang Ji, Yi Liu, zer09, Zhige
+  Xin, Serghei Iakovlev)
 *** Release notes summarized
   Thanks to: Grant Shangreaux, Songpeng Zu, Igor Almeida, Miciah Dashiel Butler
   Masters, Abhishek(Compro) Prasad, Deepak Khidia, Ward Harris, Jiahao Jiang,
